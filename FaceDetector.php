@@ -168,9 +168,16 @@ class FaceDetector
             throw new NoFaceException('No face detected');
         }
 
-        $canvas = imagecreatetruecolor($this->face['w'], $this->face['w']);
-        imagecopy($canvas, $this->canvas, 0, 0, $this->face['x'], $this->face['y'], $this->face['w'], $this->face['w']);
+        $x = ($a = $this->face['x'] - $this->face['w']/2) > 0 ? $a : 0;
+        $y = ($b = $this->face['y'] - $this->face['w']/2) > 0 ? $b : 0;
+        $im_width = imagesx($this->canvas);
+        $im_height = imagesy($this->canvas);
+        $w = ($w = $this->face['w']*2) > $im_width ? $im_width : $w;
+        $h = ($h = $w) > $im_height ? $im_height : $h;
 
+        $canvas = imagecreatetruecolor($w, $h);
+        imagecopy($canvas, $this->canvas, 0, 0, $x, $y, $w, $h);
+        
         if ($outFileName === null) {
             header('Content-type: image/jpeg');
         }
