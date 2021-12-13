@@ -183,7 +183,7 @@ class FaceDetector
             imagecopy($canvas, $this->canvas, 0, 0, $x, $y, $w, $h);
         } else {
             $canvas = imagecreatetruecolor($width, $height);
-            imagecopyresized($canvas , $this->canvas, 0, 0, $this->face['x'], $this->face['y'], $width, $height, $this->face['w'], $this->face['w']);
+            imagecopyresized($canvas, $this->canvas, 0, 0, $x, $y, $width, $height, $w, $h);
         }
 
         if ($outFileName === null) {
