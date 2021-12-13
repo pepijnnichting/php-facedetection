@@ -171,11 +171,11 @@ class FaceDetector
             throw new NoFaceException('No face detected');
         }
 
-        $x = ($a = $this->face['x'] - $this->face['w']/2) > 0 ? $a : 0;
-        $y = ($b = $this->face['y'] - $this->face['w']/2) > 0 ? $b : 0;
+        $x = ($a = $this->face['x'] - $this->face['w']/1) > 0 ? $a : 0;
+        $y = ($b = $this->face['y'] - $this->face['w']/1) > 0 ? $b : 0;
         $im_width = imagesx($this->canvas);
         $im_height = imagesy($this->canvas);
-        $w = ($w = $this->face['w']*2) > $im_width ? $im_width : $w;
+        $w = ($w = $this->face['w']*2.5) > $im_width ? $im_width : $w;
         $h = ($h = $w) > $im_height ? $im_height : $h;
 
         if (!$resize) {
